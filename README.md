@@ -1,97 +1,101 @@
-# 🏫 Sistema de Reserva de Aulas Universitarias
-
-> Sistema desarrollado en **C++** para gestionar la reserva de aulas universitarias mediante estructuras de datos como **listas enlazadas** y **colas FIFO**.
 
 ---
 
-## 📋 Descripción
+# 🏫 University Classroom Reservation System
 
-Este sistema permite a los usuarios reservar aulas universitarias de forma eficiente. Cada aula tiene su propia cola de espera independiente, garantizando que las solicitudes se gestionen de manera ordenada y sin conflictos de horario.
-
----
-
-## ⚙️ Funcionalidades
-
-| Función | Descripción |
-|---|---|
-| 📝 **Reservar un aula** | Reserva un aula validando capacidad y disponibilidad horaria |
-| 📊 **Consultar estado de aulas** | Muestra todas las aulas con su estado actual y personas en cola |
-| 👤 **Ver mis reservas** | Lista todas las reservas activas del usuario |
-| ❌ **Cancelar una reserva** | Cancela una reserva y asigna el aula al siguiente en cola |
+> System developed in **C++** to manage classroom reservations using data structures such as **linked lists** and **FIFO queues**.
 
 ---
 
-## 🏗️ Estructuras de Datos
+## 📋 Description
+
+This system allows users to efficiently reserve university classrooms. Each classroom has its own independent waiting queue, ensuring that reservation requests are handled in an orderly manner and without scheduling conflicts.
+
+---
+
+## ⚙️ Features
+
+| Function                      | Description                                                               |
+| ----------------------------- | ------------------------------------------------------------------------- |
+| 📝 **Reserve a classroom**    | Reserves a classroom while validating capacity and time availability      |
+| 📊 **Check classroom status** | Displays all classrooms with their current status and waiting queues      |
+| 👤 **View my reservations**   | Lists all active reservations for a specific user                         |
+| ❌ **Cancel a reservation**    | Cancels a reservation and assigns the classroom to the next user in queue |
+
+---
+
+## 🏗️ Data Structures
 
 ```
 PrincipalSystem
 │
-├── Lista Enlazada de Aulas (infoAulas)
-│   ├── nombre
-│   ├── capacidad
-│   ├── disponible
-│   └── Cola FIFO (colas)
-│       └── Nodos de Reserva (aulasReserva)
-│           ├── nombreUsuario
-│           ├── fecha
-│           ├── hora
-│           ├── duracion
-│           └── asignado
+├── Linked List of Classrooms (infoAulas)
+│   ├── name
+│   ├── capacity
+│   ├── availability
+│   └── FIFO Queue (colas)
+│       └── Reservation Nodes (aulasReserva)
+│           ├── userName
+│           ├── date
+│           ├── time
+│           ├── duration
+│           └── assigned
 ```
 
 ---
 
-## 🧠 Lógica del Sistema
+## 🧠 System Logic
 
 ```
-Solicitud de reserva
+Reservation request
         │
         ▼
-¿Aula existe? ──No──► Aula no encontrada
+Does classroom exist? ──No──► Classroom not found
         │
-       Sí
+       Yes
         ▼
-¿Personas ≤ Capacidad? ──No──► Capacidad insuficiente
+People ≤ Capacity? ──No──► Insufficient capacity
         │
-       Sí
+       Yes
         ▼
-¿Aula disponible?
+Is classroom available?
    │           │
-  Sí           No
+  Yes          No
    │            │
    ▼            ▼
-Asignar    ¿Conflicto de horario?
-directamente    │            │
-               Sí            No
-                │             │
-                ▼             ▼
-         ¿Encolarse o    Encolar con
-         ver horarios?   nuevo horario
+Assign       Schedule conflict?
+directly         │            │
+                Yes           No
+                 │             │
+                 ▼             ▼
+         Join queue or     Enqueue with
+         check schedules   new schedule
 ```
 
 ---
 
-## 🚀 Cómo ejecutar
+## 🚀 How to Run
 
-### Requisitos
-- Compilador C++ (g++ recomendado)
-- Estándar C++11 o superior
+### Requirements
 
-### Compilación
+* C++ compiler (g++ recommended)
+* C++11 standard or higher
+
+### Compilation
 
 ```bash
-g++ -std=c++11 main.cpp -o sistema
+g++ -std=c++11 main.cpp -o system
 ```
 
-### Ejecución
+### Execution
 
 ```bash
-./sistema
+./system
 ```
 
 ---
 
-## 🗂️ Estructura del proyecto
+## 🗂️ Project Structure
 
 ```
 📁 Parcial_1/
@@ -101,16 +105,20 @@ g++ -std=c++11 main.cpp -o sistema
 
 ---
 
-## 💡 Características clave
+## 💡 Key Features
 
-- **Validación de conflictos horarios** — Detecta solapamiento entre reservas usando lógica de intervalos
-- **Cola FIFO por aula** — Cada aula gestiona su propia lista de espera de forma independiente
-- **Asignación automática** — Al cancelar una reserva, el sistema asigna el aula al siguiente en cola automáticamente
-- **Búsqueda por usuario** — Permite consultar todas las reservas activas de un usuario recorriendo la estructura completa
+* **Schedule conflict validation** — Detects overlapping reservations using interval logic
+* **FIFO queue per classroom** — Each classroom manages its own waiting list independently
+* **Automatic assignment** — When a reservation is canceled, the system assigns the classroom to the next user in queue
+* **User-based search** — Allows querying all active reservations by traversing the entire structure
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-Jeronimo Jaramillo Agudelo - Estudiante de Ingenieria En Sistemas - Tercer Semestre
-Desarrollado como proyecto de estructuras de datos — **2026**
+**Jeronimo Jaramillo Agudelo**
+Systems Engineering Student — Third Semester
+
+Developed as a **Data Structures project — 2026**
+
+---
